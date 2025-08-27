@@ -56,10 +56,17 @@ app.get("/tasks", auth, (req, res) => {
   res.json(userTasks);
 });
 
-// Add a new task
+// // Add a new task
+// app.post("/tasks", (req, res) => {
+//   const { title, dueDate } = req.body;
+//   const userEmail = req.user.email;
+
 app.post("/tasks", (req, res) => {
-  const { title, dueDate } = req.body;
-  const userEmail = req.user.email;
+  const { title, dueDate, email } = req.body;
+  const userEmail = email; // from frontend
+// });
+
+
 
   // 🔴 Validation check
   if (!title || title.trim() === "") {
